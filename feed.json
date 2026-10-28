@@ -1,0 +1,12 @@
+{
+  "feed": "agent-office public preview",
+  "note": "Curated from LOG.md. The live deck reads this file so the preview never exposes internal working notes.",
+  "entries": [
+    { "at": "10-28", "text": "Lane skills manifest: 2 audited skills installed, 3 candidates refused by the scanner" },
+    { "at": "10-28", "text": "CI gate green — methodology + skill manifest checked on every push" },
+    { "at": "10-26", "text": "METHODOLOGY.md v1.0 locked: 13 invariants, M13 = charter outranks engine" },
+    { "at": "10-26", "text": "Negative controls verified: deleting the charter fails M2/M3, softening the evidence rule fails M8" },
+    { "at": "10-20", "text": "Meetings scaffolded: founders talk, Navis scribe, every meeting ends in decisions + owners" },
+    { "at": "10-18", "text": "Deck live: 4 operators, 4 Navis, Rangers per lane, Megazord on combination" }
+  ]
+}

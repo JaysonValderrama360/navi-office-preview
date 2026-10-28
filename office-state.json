@@ -1,0 +1,107 @@
+{
+  "office": "agent-office",
+  "version": "0.2.0",
+  "updated_at": "2026-10-18",
+  "operators": [
+    {
+      "id": "founder-1",
+      "human": "Founder 1",
+      "navi": {
+        "name": "Navi-01",
+        "form": "NetNavi (solo) / Megazord-part (combined)",
+        "avatar": "\ud83e\udd81",
+        "color": "#da3633",
+        "status": "idle",
+        "model": "deepseek/deepseek-v4.1-flash",
+        "provider": "commandcode"
+      },
+      "rangers": [
+        {
+          "id": "scout-01",
+          "role": "Scout / Researcher",
+          "icon": "\ud83d\udd0d",
+          "status": "working"
+        },
+        {
+          "id": "builder-01",
+          "role": "Builder / Coder",
+          "icon": "\u26a1",
+          "status": "working"
+        },
+        {
+          "id": "auditor-01",
+          "role": "Auditor / Checker",
+          "icon": "\ud83d\udee1\ufe0f",
+          "status": "idle"
+        }
+      ]
+    },
+    {
+      "id": "founder-2",
+      "human": "Founder 2",
+      "navi": {
+        "name": "Navi-02",
+        "form": "NetNavi (solo) / Megazord-part (combined)",
+        "avatar": "\ud83e\udd85",
+        "color": "#1f6feb",
+        "status": "idle",
+        "model": "deepseek/deepseek-v4.1-flash",
+        "provider": "commandcode"
+      },
+      "rangers": [
+        {
+          "id": "scout-02",
+          "role": "Scout / Researcher",
+          "icon": "\ud83d\udd0d",
+          "status": "idle"
+        },
+        {
+          "id": "builder-02",
+          "role": "Builder / Coder",
+          "icon": "\u26a1",
+          "status": "working"
+        }
+      ]
+    },
+    {
+      "id": "founder-3",
+      "human": "Founder 3",
+      "navi": {
+        "name": "Navi-03",
+        "form": "NetNavi (solo) / Megazord-part (combined)",
+        "avatar": "\ud83d\udc3a",
+        "color": "#9e6a03",
+        "status": "nudge",
+        "model": "deepseek/deepseek-v4.1-flash",
+        "provider": "commandcode",
+        "nudge": "Decision fork: option A vs option B \u2014 awaiting human pick"
+      },
+      "rangers": [
+        {
+          "id": "scout-03",
+          "role": "Scout / Researcher",
+          "icon": "\ud83d\udd0d",
+          "status": "idle"
+        }
+      ]
+    },
+    {
+      "id": "founder-4",
+      "human": "Founder 4",
+      "navi": {
+        "name": "Navi-04",
+        "form": "NetNavi (solo) / Megazord-part (combined)",
+        "avatar": "\ud83d\udc09",
+        "color": "#8957e5",
+        "status": "idle",
+        "model": "deepseek/deepseek-v4.1-flash",
+        "provider": "commandcode"
+      },
+      "rangers": []
+    }
+  ],
+  "logbook": {
+    "handoff": "HANDOFF.md",
+    "log": "LOG.md"
+  }
+}

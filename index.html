@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Office — NetNavi Deck</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --panel: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --muted: #8b949e;
+            --accent: #58a6ff;
+            --green: #3fb950;
+            --yellow: #d29922;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 24px 16px 40px;
+            min-height: 100vh;
+        }
+        header { text-align: center; margin-bottom: 20px; }
+        header h1 { margin: 0; color: var(--accent); font-size: 22px; letter-spacing: .5px; }
+        header p { color: var(--muted); font-size: 13px; margin: 6px 0 0; }
+        #workspace {
+            width: 860px;
+            max-width: 100%;
+            background-color: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,.5);
+        }
+        .section-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+            margin: 0 0 12px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .section-title .hint { font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 11px; }
+        .desks-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+        @media (max-width: 760px) { .desks-grid { grid-template-columns: 1fr; } }
+        .desk-card {
+            background-color: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 10px;
+            text-align: center;
+            position: relative;
+            transition: border-color .2s, transform .2s;
+        }
+        .desk-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .desk-card[data-status="nudge"] { border-color: var(--yellow); }
+        .avatar {
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; margin: 0 auto 8px;
+            border: 2px solid var(--border);
+        }
+        .name { font-size: 13px; font-weight: 700; color: #e6edf3; white-space: nowrap; line-height: 1.5; }
+        .role { font-size: 11px; color: var(--muted); margin: 2px 0 6px; white-space: nowrap; }
+        .model { font-size: 10px; color: var(--muted); margin-bottom: 8px; font-style: italic; }
+        .badge {
+            font-size: 10px; padding: 3px 9px; border-radius: 12px;
+            font-weight: 700; display: inline-block;
+        }
+        .b-working { background: rgba(35,134,54,.18); color: var(--green); border: 1px solid #238636; }
+        .b-meeting { background: rgba(31,111,235,.18); color: var(--accent); border: 1px solid #1f6feb; }
+        .b-nudge { background: rgba(210,153,34,.18); color: var(--yellow); border: 1px solid #9e6a03; }
+        .rangers { margin-top: 8px; display: flex; gap: 4px; justify-content: center; flex-wrap: wrap; }
+        .ranger-chip {
+            font-size: 10px; background: #21262d; border: 1px solid var(--border);
+            border-radius: 8px; padding: 2px 6px; color: var(--text);
+        }
+        .nudge-text { font-size: 10px; color: var(--yellow); margin-top: 6px; }
+        #log-box {
+            background-color: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 12px;
+            color: var(--green);
+            height: 130px;
+            overflow-y: auto;
+            line-height: 1.7;
+        }
+        #log-box .ts { color: var(--muted); }
+        footer { margin-top: 14px; font-size: 11px; color: var(--muted); text-align: center; }
+        footer a { color: var(--accent); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏢 Agent Office — NetNavi Deck</h1>
+        <p>4 operators · 4 NetNavis · 1 Megazord when combined · 24/7 async</p>
+        <p style="margin-top:10px"><a href="flow.html" style="color:#58a6ff;text-decoration:none;border:1px solid #30363d;border-radius:8px;padding:5px 12px;font-size:12px">See how work actually flows →</a></p>
+    </header>
+
+    <div id="workspace">
+        <div class="section-title">
+            <span>Operators &amp; NetNavis</span>
+            <span class="hint" id="state-meta">loading office-state.json…</span>
+        </div>
+        <div class="desks-grid" id="desks"></div>
+
+        <div class="section-title">
+            <span>Live logbook feed</span>
+            <span class="hint">HANDOFF.md + LOG.md</span>
+        </div>
+        <div id="log-box">connecting…</div>
+    </div>
+
+    <footer>
+        Solo form = <strong>NetNavi</strong> (your operator-linked avatar) ·
+        Combined form = <strong>Megazord</strong> (all 4 in a meeting) ·
+        Rangers = worker sub-agents under each Navi.<br>
+        <span id="foot-status">state: local file mode</span>
+    </footer>
+
+<script>
+const STATUS_META = {
+    working: { label: "🟢 Working", cls: "b-working" },
+    meeting: { label: "🔵 In Meeting", cls: "b-meeting" },
+    nudge:   { label: "🚨 Nudge Needed", cls: "b-nudge" },
+    idle:    { label: "💤 Idle", cls: "b-meeting" }
+};
+
+async function loadState() {
+    const desksEl = document.getElementById("desks");
+    const metaEl = document.getElementById("state-meta");
+    const footEl = document.getElementById("foot-status");
+    try {
+        const res = await fetch("office-state.json", { cache: "no-store" });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const state = await res.json();
+        metaEl.textContent = "v" + (state.version || "?") + " · updated " + (state.updated_at || "?");
+        footEl.textContent = "state: live from office-state.json · v" + (state.version || "?");
+        desksEl.innerHTML = "";
+        for (const op of state.operators || []) {
+            const navi = op.navi || {};
+            const sm = STATUS_META[navi.status] || STATUS_META.idle;
+            const card = document.createElement("div");
+            card.className = "desk-card";
+            card.dataset.status = navi.status || "idle";
+            const rangers = (op.rangers || []).map(r =>
+                `<span class="ranger-chip" title="${r.role} — ${r.status}">${r.icon} ${r.role.split(" /")[0]}</span>`
+            ).join("");
+            card.innerHTML =
+                `<div class="avatar" style="border-color:${navi.color || "#30363d"}">${navi.avatar || "🤖"}</div>` +
+                `<div class="name">${op.human || op.id}</div>` +
+                `<div class="role">${navi.name || "Navi"} · NetNavi</div>` +
+                `<div class="model">${navi.model || "BYOB"}</div>` +
+                `<span class="badge ${sm.cls}">${sm.label}</span>` +
+                (rangers ? `<div class="rangers">${rangers}</div>` : "") +
+                (navi.nudge ? `<div class="nudge-text">${navi.nudge}</div>` : "");
+            desksEl.appendChild(card);
+        }
+    } catch (e) {
+        metaEl.textContent = "static fallback (open via server for live state)";
+        footEl.textContent = "state: static fallback — serve over http for live JSON";
+        desksEl.innerHTML =
+            [{a:"🦁", h:"Founder 1", n:"Navi-01", s:"working"},
+             {a:"🦅", h:"Founder 2", n:"Navi-02", s:"meeting"},
+             {a:"🐺", h:"Founder 3", n:"Navi-03", s:"nudge"},
+             {a:"🐉", h:"Founder 4", n:"Navi-04", s:"working"}].map(function(c) {
+                var sm = STATUS_META[c.s];
+                return `<div class="desk-card" data-status="${c.s}">` +
+                    `<div class="avatar">${c.a}</div>` +
+                    `<div class="name">${c.h}</div>` +
+                    `<div class="role">${c.n} · NetNavi</div>` +
+                    `<div class="model">BYOB — plug your key</div>` +
+                    `<span class="badge ${sm.cls}">${sm.label}</span></div>`;
+            }).join("");
+    }
+}
+
+async function loadLog() {
+    const box = document.getElementById("log-box");
+    try {
+        const res = await fetch("feed.json", { cache: "no-store" });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const feed = await res.json();
+        const entries = (feed.entries || []).slice(0, 6);
+        box.innerHTML = entries.map(e =>
+            `<div><span class="ts">${e.at}</span> ${e.text}</div>`
+        ).join("") || "feed empty";
+    } catch (e) {
+        box.innerHTML =
+            `<div><span class="ts">[live]</span> Navi-01 synced HANDOFF.md</div>` +
+            `<div><span class="ts">[live]</span> Scout Ranger gathered external specs</div>` +
+            `<div><span class="ts">[live]</span> Navi-03 flagged decision fork — awaiting human nudge</div>` +
+            `<div><span class="ts">[live]</span> 24/7 async assembly line online</div>`;
+    }
+}
+
+loadState();
+loadLog();
+setInterval(loadState, 15000);
+setInterval(loadLog, 15000);
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Office — How Work Flows</title>
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e; --accent:#58a6ff; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text);
+         font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         padding:24px 16px 48px; display:flex; flex-direction:column; align-items:center; }
+  header { text-align:center; margin-bottom:18px; max-width:880px; }
+  header h1 { margin:0; color:var(--accent); font-size:22px; letter-spacing:.4px; }
+  header p { color:var(--muted); font-size:13px; margin:8px 0 0; line-height:1.5; }
+  header a { color:var(--accent); text-decoration:none; border:1px solid var(--border);
+             border-radius:8px; padding:5px 12px; font-size:12px; display:inline-block; margin-top:14px; }
+  .wrap { width:100%; max-width:900px; overflow-x:auto; -webkit-overflow-scrolling:touch;
+          background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:10px;
+          box-shadow:0 8px 24px rgba(0,0,0,.5); }
+  svg { display:block; width:100%; min-width:760px; height:auto; }
+  .t { font-family:inherit; }
+  footer { margin-top:16px; font-size:11px; color:var(--muted); text-align:center; line-height:1.6; }
+</style>
+</head>
+<body>
+<header>
+  <h1>How work actually flows</h1>
+  <p>One task at a time, through four gates. Nothing leaves a lane without proof,
+     nothing ships without a human signature, and the record outlives the session.</p>
+  <a href="index.html">← Back to the deck</a>
+</header>
+
+<div class="wrap">
+<svg viewBox="0 0 900 1080" role="img" aria-label="Flowchart: task intake, charter check, lane routing, isolated work, evidence gate, approval gate, record, shipped">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="aw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d29922"/>
+    </marker>
+    <marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8957e5"/>
+    </marker>
+  </defs>
+
+  <!-- spine -->
+  <rect x="270" y="60" width="360" height="64" rx="10" fill="#0d1117" stroke="#30363d"/>
+  <text class="t" x="450" y="86" text-anchor="middle" font-size="14" font-weight="700" fill="#e6edf3">Task arrives</text>
+  <text class="t" x="450" y="106" text-anchor="middle" font-size="11" fill="#8b949e">written brief, not a hallway request</text>
+
+  <line x1="450" y1="124" x2="450" y2="150" stroke="#58a6ff" stroke-width="1.6" marker-end="url(#a)"/>
+
+  <rect x="270" y="152" width="360" height="78" rx="10" fill="#161b22" stroke="#d29922"/>
+  <text class="t" x="450" y="178" text-anchor="middle" font-size="13" font-weight="700" fill="#d29922">◆ CHARTER CHECK · M1–M13</text>
+  <text class="t" x="450" y="198" text-anchor="middle" font-size="11" fill="#c9d1d9">does this request survive the constitution?</text>
+  <text class="t" x="450" y="216" text-anchor="middle" font-size="10.5" fill="#8b949e">human lanes · fixed rangers · BYOB keys · no silent waiver</text>
+
+  <line x1="450" y1="230" x2="450" y2="256" stroke="#58a6ff" stroke-width="1.6" marker-end="url(#a)"/>
+
+  <!-- lanes -->
+  <rect x="270" y="258" width="112" height="96" rx="9" fill="#161b22" stroke="#8957e5"/>
+  <text class="t" x="326" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#e6edf3">Scout</text>
+  <text class="t" x="326" y="304" text-anchor="middle" font-size="9.5" fill="#8b949e">research</text>
+  <text class="t" x="326" y="318" text-anchor="middle" font-size="9.5" fill="#8b949e">ground truth</text>
+  <text class="t" x="326" y="338" text-anchor="middle" font-size="9" fill="#8957e5">M4 fixed lane</text>
+
+  <rect x="394" y="258" width="112" height="96" rx="9" fill="#161b22" stroke="#8957e5"/>
+  <text class="t" x="450" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#e6edf3">Builder</text>
+  <text class="t" x="450" y="304" text-anchor="middle" font-size="9.5" fill="#8b949e">the actual</text>
+  <text class="t" x="450" y="318" text-anchor="middle" font-size="9.5" fill="#8b949e">change</text>
+  <text class="t" x="450" y="338" text-anchor="middle" font-size="9" fill="#8957e5">M4 fixed lane</text>
+
+  <rect x="518" y="258" width="112" height="96" rx="9" fill="#161b22" stroke="#8957e5"/>
+  <text class="t" x="574" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="#e6edf3">Auditor</text>
+  <text class="t" x="574" y="304" text-anchor="middle" font-size="9.5" fill="#8b949e">attack it</text>
+  <text class="t" x="574" y="318" text-anchor="middle" font-size="9.5" fill="#8b949e">before a buyer</text>
+  <text class="t" x="574" y="338" text-anchor="middle" font-size="9" fill="#8957e5">M4 fixed lane</text>
+
+  <path d="M326,354 L326,372 L450,372 L450,390" stroke="#58a6ff" stroke-width="1.6" fill="none" marker-end="url(#a)"/>
+  <line x1="450" y1="354" x2="450" y2="390" stroke="#58a6ff" stroke-width="1.6" marker-end="url(#a)"/>
+  <path d="M574,354 L574,372 L450,372" stroke="#58a6ff" stroke-width="1.6" fill="none"/>
+
+  <!-- megazord rail -->
+  <rect x="666" y="258" width="218" height="96" rx="9" fill="#161b22" stroke="#8957e5" stroke-dasharray="5 4"/>
+  <text class="t" x="775" y="284" text-anchor="middle" font-size="12" font-weight="700" fill="#e6edf3">MEGAZORD</text>
+  <text class="t" x="775" y="302" text-anchor="middle" font-size="10" fill="#c9d1d9">joint command mode</text>
+  <text class="t" x="775" y="320" text-anchor="middle" font-size="9.5" fill="#8b949e">only when 2+ lanes need</text>
+  <text class="t" x="775" y="334" text-anchor="middle" font-size="9.5" fill="#8b949e">one decision together</text>
+  <text class="t" x="775" y="348" text-anchor="middle" font-size="9" fill="#8957e5">M3 · combination, not swarm</text>
+  <line x1="630" y1="306" x2="664" y2="306" stroke="#8957e5" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ap)"/>
+  <line x1="664" y1="326" x2="632" y2="326" stroke="#8957e5" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ap)"/>
+
+  <!-- work -->
+  <rect x="270" y="392" width="360" height="66" rx="10" fill="#0d1117" stroke="#30363d"/>
+  <text class="t" x="450" y="418" text-anchor="middle" font-size="13" font-weight="700" fill="#e6edf3">Work in isolation</text>
+  <text class="t" x="450" y="438" text-anchor="middle" font-size="10.5" fill="#8b949e">one branch / worktree per task — nothing touches shared state</text>
+
+  <line x1="450" y1="458" x2="450" y2="484" stroke="#58a6ff" stroke-width="1.6" marker-end="url(#a)"/>
+
+  <!-- evidence gate -->
+  <rect x="270" y="486" width="360" height="88" rx="10" fill="#161b22" stroke="#d29922"/>
+  <text class="t" x="450" y="512" text-anchor="middle" font-size="13" font-weight="700" fill="#d29922">◆ EVIDENCE GATE · M8</text>
+  <text class="t" x="450" y="532" text-anchor="middle" font-size="11" fill="#c9d1d9">artifact, diff, test output, or citation</text>
+  <text class="t" x="450" y="550" text-anchor="middle" font-size="10.5" fill="#8b949e">"it works" is not evidence · VERIFIED ≠ REPORTED (M7)</text>
+  <text class="t" x="450" y="566" text-anchor="middle" font-size="9.5" fill="#8b949e">enforced by office.py — it refuses to settle without proof</text>
+
+  <!-- fail loop -->
+  <path d="M270,530 L210,530 L210,306 L268,306" stroke="#d29922" stroke-width="1.5" fill="none" stroke-dasharray="5 4" marker-end="url(#aw)"/>
+  <text class="t" x="204" y="422" text-anchor="middle" font-size="9" fill="#d29922" transform="rotate(-90 204 422)">refused: no proof</text>
+
+  <line x1="450" y1="574" x2="450" y2="600" stroke="#58a6ff" stroke-width="1.6" marker-end="url(#a)"/>
+
+  <!-- approval gate -->
+  <rect x="270" y="602" width="360" height="78" rx="10" fill="#161b22" stroke="#d29922"/>
+  <text class="t" x="450" y="628" text-anchor="middle" font-size="13" font-weight="700" fill="#d29922">◆ APPROVAL GATE · M10</text>
+  <text class="t" x="450" y="648" text-anchor="middle" font-size="11" fill="#c9d1d9">outbound messages and spend need a human signature</text>
+  <text class="t" x="450" y="666" text-anchor="middle" font-size="9.5" fill="#8b949e">no auto-send · no auto-pay · the gate is a file, not a promise</text>
+
+  <!-- nudge rail -->
+  <rect x="666" y="602" width="218" height="78" rx="9" fill="#161b22" stroke="#d29922" stroke-dasharray="5 4"/>
+  <text class="t" x="775" y="626" text-anchor="middle" font-size="12" font-weight="700" fill="#d29922">NUDGE · M9</text>
+  <text class="t" x="775" y="644" text-anchor="middle" font-size="9.5" fill="#c9d1d9">routine → act alone</text>
+  <text class="t" x="775" y="658" text-anchor="middle" font-size="9.5" fill="#c9d1d9">strategic fork → page the human</text>
+  <text class="t" x="775" y="672" text-anchor="middle" font-size="9" fill="#8b949e">nudge.py, never a silent guess</text>
+  <line x1="630" y1="641" x2="664" y2="641" stroke="#d29922" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#aw)"/>
+
+  <line x1="450" y1="680" x2="450" y2="706" stroke="#58a6ff" stroke-width="1.6" marker-end="url(#a)"/>
+
+  <!-- record -->
+  <rect x="270" y="708" width="360" height="74" rx="10" fill="#0d1117" stroke="#30363d"/>
+  <text class="t" x="450" y="734" text-anchor="middle" font-size="13" font-weight="700" fill="#e6edf3">Record it · M11</text>
+  <text class="t" x="450" y="752" text-anchor="middle" font-size="10.5" fill="#8b949e">LOG.md (what happened) + HANDOFF.md (what is next)</text>
+  <text class="t" x="450" y="768" text-anchor="middle" font-size="9.5" fill="#8b949e">readable by a stranger with no access to this chat</text>
+
+  <line x1="450" y1="782" x2="450" y2="808" stroke="#58a6ff" stroke-width="1.6" marker-end="url(#a)"/>
+
+  <rect x="270" y="810" width="360" height="60" rx="10" fill="#0f1f14" stroke="#3fb950"/>
+  <text class="t" x="450" y="836" text-anchor="middle" font-size="13" font-weight="700" fill="#3fb950">Shipped — with a receipt</text>
+  <text class="t" x="450" y="854" text-anchor="middle" font-size="10.5" fill="#8b949e">the diff, the proof, the approval, the log entry</text>
+
+  <!-- left invariant chips -->
+  <rect x="14" y="405" width="176" height="30" rx="7" fill="#0d1117" stroke="#30363d"/>
+  <text class="t" x="24" y="424" font-size="10" fill="#8b949e">M1 · clean-slate isolation</text>
+  <rect x="14" y="512" width="176" height="30" rx="7" fill="#0d1117" stroke="#30363d"/>
+  <text class="t" x="24" y="531" font-size="10" fill="#8b949e">M8 · proof or refuse</text>
+  <rect x="14" y="626" width="176" height="30" rx="7" fill="#0d1117" stroke="#30363d"/>
+  <text class="t" x="24" y="645" font-size="10" fill="#8b949e">M10 · the human signs</text>
+  <rect x="14" y="730" width="176" height="30" rx="7" fill="#0d1117" stroke="#30363d"/>
+  <text class="t" x="24" y="749" font-size="10" fill="#8b949e">M11 · the record outlives</text>
+
+  <!-- engine band -->
+  <rect x="14" y="906" width="870" height="100" rx="10" fill="#161b22" stroke="#58a6ff"/>
+  <text class="t" x="34" y="938" font-size="14" font-weight="700" fill="#58a6ff">The engine is swappable. The charter is not. — M13</text>
+  <text class="t" x="34" y="962" font-size="11" fill="#c9d1d9">Munder or Orca can run the floor and draw the office. METHODOLOGY.md + check_methodology.py decide what a run is allowed to be.</text>
+  <text class="t" x="34" y="984" font-size="11" fill="#8b949e">Swap the engine and every gate above still holds; break the charter and the build goes red.</text>
+
+  <text class="t" x="450" y="1040" text-anchor="middle" font-size="10.5" fill="#8b949e">Every gate above is a checked invariant: python3 scripts/check_methodology.py → 22/22 PASS</text>
+</svg>
+</div>
+
+<footer>
+  ◆ gate &nbsp;·&nbsp; ▢ step &nbsp;·&nbsp; ┄ human boundary<br>
+  Public preview — state and feed are curated, not the live internal log
+</footer>
+</body>
+</html>
