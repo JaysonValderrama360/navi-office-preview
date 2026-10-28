@@ -1,37 +1,42 @@
 {
   "office": "agent-office",
   "version": "0.2.0",
-  "updated_at": "2026-10-18",
+  "updated_at": "2026-10-28",
   "operators": [
     {
       "id": "founder-1",
       "human": "Founder 1",
       "navi": {
         "name": "Navi-01",
-        "form": "NetNavi (solo) / Megazord-part (combined)",
-        "avatar": "\ud83e\udd81",
+        "form": "NetNavi + Rangers = that founder's Megazord",
+        "avatar": "🦁",
         "color": "#da3633",
         "status": "idle",
         "model": "deepseek/deepseek-v4.1-flash",
-        "provider": "commandcode"
+        "provider": "commandcode",
+        "mandate": {
+          "commit": "reversible, inside agreed policy",
+          "provisional": "reversible, outside precedent",
+          "escalate": "irreversible, money, external, naming the human"
+        }
       },
       "rangers": [
         {
           "id": "scout-01",
           "role": "Scout / Researcher",
-          "icon": "\ud83d\udd0d",
+          "icon": "🔍",
           "status": "working"
         },
         {
           "id": "builder-01",
           "role": "Builder / Coder",
-          "icon": "\u26a1",
+          "icon": "⚡",
           "status": "working"
         },
         {
           "id": "auditor-01",
           "role": "Auditor / Checker",
-          "icon": "\ud83d\udee1\ufe0f",
+          "icon": "🛡️",
           "status": "idle"
         }
       ]
@@ -41,24 +46,29 @@
       "human": "Founder 2",
       "navi": {
         "name": "Navi-02",
-        "form": "NetNavi (solo) / Megazord-part (combined)",
-        "avatar": "\ud83e\udd85",
+        "form": "NetNavi + Rangers = that founder's Megazord",
+        "avatar": "🦅",
         "color": "#1f6feb",
         "status": "idle",
         "model": "deepseek/deepseek-v4.1-flash",
-        "provider": "commandcode"
+        "provider": "commandcode",
+        "mandate": {
+          "commit": "reversible, inside agreed policy",
+          "provisional": "reversible, outside precedent",
+          "escalate": "irreversible, money, external, naming the human"
+        }
       },
       "rangers": [
         {
           "id": "scout-02",
           "role": "Scout / Researcher",
-          "icon": "\ud83d\udd0d",
+          "icon": "🔍",
           "status": "idle"
         },
         {
           "id": "builder-02",
           "role": "Builder / Coder",
-          "icon": "\u26a1",
+          "icon": "⚡",
           "status": "working"
         }
       ]
@@ -68,19 +78,24 @@
       "human": "Founder 3",
       "navi": {
         "name": "Navi-03",
-        "form": "NetNavi (solo) / Megazord-part (combined)",
-        "avatar": "\ud83d\udc3a",
+        "form": "NetNavi + Rangers = that founder's Megazord",
+        "avatar": "🐺",
         "color": "#9e6a03",
         "status": "nudge",
         "model": "deepseek/deepseek-v4.1-flash",
         "provider": "commandcode",
-        "nudge": "Decision fork: option A vs option B \u2014 awaiting human pick"
+        "nudge": "Decision fork: option A vs option B — awaiting human pick",
+        "mandate": {
+          "commit": "reversible, inside agreed policy",
+          "provisional": "reversible, outside precedent",
+          "escalate": "irreversible, money, external, naming the human"
+        }
       },
       "rangers": [
         {
           "id": "scout-03",
           "role": "Scout / Researcher",
-          "icon": "\ud83d\udd0d",
+          "icon": "🔍",
           "status": "idle"
         }
       ]
@@ -90,12 +105,17 @@
       "human": "Founder 4",
       "navi": {
         "name": "Navi-04",
-        "form": "NetNavi (solo) / Megazord-part (combined)",
-        "avatar": "\ud83d\udc09",
+        "form": "NetNavi + Rangers = that founder's Megazord",
+        "avatar": "🐉",
         "color": "#8957e5",
         "status": "idle",
         "model": "deepseek/deepseek-v4.1-flash",
-        "provider": "commandcode"
+        "provider": "commandcode",
+        "mandate": {
+          "commit": "reversible, inside agreed policy",
+          "provisional": "reversible, outside precedent",
+          "escalate": "irreversible, money, external, naming the human"
+        }
       },
       "rangers": []
     }
